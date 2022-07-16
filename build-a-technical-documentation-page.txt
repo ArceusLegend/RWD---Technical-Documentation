@@ -1,0 +1,443 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Some technical document or smth idk" />
+    <title>Technical Documentation for some important shit</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="main-doc">
+      <nav id="navbar">
+        <header>
+          C Documentation
+        </header>
+        <ul>
+          <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+          <li><a class="nav-link" href="#What_you_should_already_know">What you should already know</a></li>
+          <li><a class="nav-link" href="#C_and_its_offsprings">C and its offsprings</a></li>
+          <li><a class="nav-link" href="#Hello_world">Hello world</a></li>
+          <li><a class="nav-link" href="#Libraries">Libraries</a></li>
+          <li><a class="nav-link" href="#The_include_statement">The include statement</a></li>
+          <li><a class="nav-link" href="#Variables">Variables</a></li>
+          <li><a class="nav-link" href="#Arrays">Arrays</a></li>
+          <li><a class="nav-link" href="#Constants">Constants</a></li>
+          <li><a class="nav-link" href="#Data_Types">Data Types</a></li>
+          <li><a class="nav-link" href="#Operators">Operators</a></li>
+          <li><a class="nav-link" href="#The_if...else_and_switch_statements">The if...else and switch statements</a></li>
+          <li><a class="nav-link" href="#The_while_and_for_statements">The while and for statements</a></li>
+          <li><a class="nav-link" href="#Functions">Functions</a></li>
+        </ul>
+      </nav>
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>C was originally created as a successor to the B programming language at Bell Labs by Dennis Ritchie in the early 70s in order to make utilities for Unix. Since then, it has become of the most popular programming languages in the world.</p>
+          <p>This success is owed to C being an imperative procedural language supporting structured programming, lexical variable scope, and recursion, with a static type system. It was designed to be compiled to provide low-level access to memory and language constructs that map efficiently to machine instructions, all with minimal runtime support.</p>
+          <ul>
+            <li>In Layman's terms, it means that programs executed via a C compiler run faster than most other languages.</li>
+          </ul>
+          <p>C is mostly used to deveop operating systems, device drivers, and other such embedded systems.</p>
+        </article>
+      </section>
+      <section class="main-section" id="What_you_should_already_know">
+        <header>What you should already know</header>
+        <article>
+          <p>This document aims to be as beginner friendly as possible. Although it will cover the most basic aspects of the language, it is still recommended that you at least understand basic syntax like declaring variables, allowed character set, and reserved words.</p>
+        </article>
+      </section>
+      <section class="main-section" id="C_and_its_offsprings">
+        <header>C and its offsprings</header>
+        <article>
+          <p>Many programming languages that came after C have borrowed features, like Java, JavaScript, PHP, Python, and many more. However, a few of them are direct successors of C and therefore share a level of compatibility with each other.</p>
+          <p>C++ is the most notable example, as it's often paired with C in keywords like 'C/C++'. It was originally developed as an extention of C to introduce object-oriented programming, and has since been expanded to include generic/functional features in addition to low-level memory manipulation. Its most popular use is for vidoe games and desktop applications.</p>
+        </article>
+      </section>
+      <section class="main-section" id="Hello_world">
+        <header>Hello world</header>
+        <article>
+          <p>Every programmer has started their journey with a simple program that outputs a simple message: "Hello, world!". You can use any compiler you like to give it a try!</p>
+          <code>#include&ltstdio.h&gt
+
+            int main(){
+              printf("Hello, world!");
+              return 0;
+            }
+          </code>
+
+          <p>It may look complicated, but with a little practice it becomes second nature. But how does it work? Let's start from the top.</p>
+        </article>
+      </section>
+      <section class="main-section" id="Libraries">
+        <header>Libraries</header>
+        <article>
+          <p>Libraries are the primary method of extending C's functionality. They contain functions within a single "archive" file. This is usually a header file, which contains functions, variables, other special data types, and macro symbols within these fucntions.</p>
+          <p>The most common C library is the C standard library, which comes with every implementation of C, including the compiler you used. stdio.h is part of this library.</p>
+          <ul>
+            <li> stdio stands for "<b>st</b>andar<b>d</b> <b>i</b>nput and <b>o</b>utput". It contains the printf function (more on that later), which prints a string (more on that later) that you used to print "Hello, world!" on your screen. The .h file extension signifies that it's a header file</li>
+            <li>Besides basic i/o functions that we'll go over in this document, stdio provides more advanced statements like fprintf, snprintf, sprintf, vfprintf, and vsprintf, which will work just fine in this particular example. They will not be covered in this document.</li>
+            <li>Other beginner friendly libraries include math.h, which defines some common mathetical functions like basic trigonometry (sin/cos/tan etc), stdlib.h which defines functions for numeric conversion, generating pseudo-random numbers among more advanced functions, and string.h and time.h which define functions for handling strings and date/time handling respectively.</li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="The_include_statement">
+        <header>The include statement</header>
+        <article>
+          <p>The #include<> statement allows the main program to access and use the functions and variables defined in the specified header file. It's a macro, meaning it has to be used at the biginning of your code. It is possible to have multiple of these statements at once to access multiple headers.</p>
+          <code>#include&ltstdio.h&gt
+            #include&ltstdlib.h&gt
+            #include&ltmath.h&gt
+            #include&lttime.h&gt
+
+            int main(){
+              .
+              .
+              .
+            }</code>
+          <p>The above code will allow the program below it access functions within stdio.h, stdlib.h, math.h, and time.h. You <b>CANNOT</b> have multiple header files defined within a single #include statement.
+        </article>
+      </section>
+      <section class="main-section" id="Variables">
+        <header>Variables</header>
+        <article>
+          <p>Variables in C have a type, a name, and a value. There are a few rules that apply.</p>
+          <p>Basic C allows strings of a-z, A-Z, 0-9, and graphic characters. With the exception of reserved words, more commonly known as keywords.</p>
+          <ul>
+            <li>Depending on your compiler, it may also be possible to use unicode characters to define variables</li>
+            <li>Although variable names can include numbers, they can't start with one. For example, 1string isn't a valid name, but string1 or str1ng is a valid name.</li>
+            <li>There can't be blank space in the name. For example, var 1 isn't a valid name, but var_1 or var-1 are both valid.</li>
+            <li>Because C is case sensitive, a variable like var isn't the same as VAR or Var.</li>
+          </ul>
+          <p>Declaring a variable follows this syntax:</p>
+          <code>variable_type variable_name = variable_value;</code>
+          <p>For example:</p>
+          <code>int var = 1;</code>
+          <p>The semi colon isn't a typo. It is used to close most statements, with exceptions that we'll see later. If you have multiple statements in a line or a block of lines without a semi colon to close each one, the compiler will produce an error and the program won't run.</p>
+          <p>It is also not necessary to give variables a value in the same statement as their declaration. Variables can remain blank and given a value during runtime (ie While the program is running). For example:</p>
+          <code>int var;
+            var = 1;</code>
+          <p>Functionally, the code above and the code before it do the exact same thing, except that the latter assigns a value while the program is running, while the previous code assigns a value during compilation (ie before the program starts running).</p>
+          <p>Finally, variables can be global. This means that they can be used by any function within your program. These are declared outside all functions/structs/etc; if they're declared within one, they can't be used by any other function/struct/etc. It is generally considered best practice not to use global variables as more complex projects can become confusing with the use of these variables.</p>
+        </article>
+      </section>
+      <section class="main-section" id="Arrays">
+        <header>Arrays</header>
+        <article>
+          <p>Variables are stored in pieces of memory, and the location is represented by the name you chose when declaring the variable. Sometimes however, you want to declare a number of different variables of the same type that are associated with one another. You could just declare them manually, one by one, but that is impractical. If you have 50 related variables you want to declare, it's obviously not ideal to take up 50 lines of code to declare them individually. This is where arrays come in.</p>
+          <code>int arr[50];</code>
+          <p>The code above declares an array of 50 integer numbers. Arrays take any number of variables and store them in adjacent memory cells. To declare one, you have to define the data type, a name, and how many variables it can take.</p>
+          <code>data_type array_name[row_length];</code>
+          <p>Notice the row_length? That's because arrays can be multidimensional. The arrays defined above have 1 row, but you can add more brackets <i>without spaces</i> to add more columns and dimensions to your array, like this: </p>
+          <code>data_type array_name[rows][columns][z-rows][w-columns]...[n];</code>
+          <p>The code above is how you declare an array of n dimensions. There are various uses for this, primarily for linear algebra applications such as representing matrices using 2 dimensional arrays, or representing n-dimension systems.</p>
+          <ul>
+            <li>Keep in mind that elements within an array are counted starting from 0, not 1. When you declare an array of, let's say, 50 integers, you'll write it as int arr[50], but the first element will always be arr[0] and the last element will be arr[49]. There is no arr[50] element. This will be important later.</li>
+            <li>Arrays can only hold one type of data per array. You can't have an array that holds both integers and strings for example. More on data types later.</li>
+            <li>The array size can also be defined during runtime. These types of arrays are known as variable-length arrays. You can declare one by assigning an integer value to [array-size] and then defining the integer, like this:
+              <code>int arr[x];
+                int x = somenumber;</code>
+              Obviously, you can't use anything other than an integer to declare a variable-length array. Anything other than a integer will cause the compiler to produce an error and the program can't run.
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Constants">
+        <header>Constants</header>
+        <article>
+          <p>Computers perform 2 basic actions when running: reading and writing They're both very self-explanatory: read means that the computer is reading the contents of a memory slot, and write means that the computer is writing something to a memory slot. Obviously it gets a lot more complicated if you delve deeper into Computer Science, but for the purpose of explaining constant, this is enough to understand.</p>
+          <p>A constant element essentially changes a statement to be read-only. The computer can still manipulate the data within it during compilation, but during runtime they can't be changed by the user. If the user does try to change it. nothing will happen, and some compilers might even produce an error for them.</p>
+          <p>To declare a constant variable, you only need to add the keyword "const" before the data type, like this:</p>
+          <code>const int x;</code>
+          <ul>
+            <li>You can also use the #define macro to make a variable constant, like this:
+              <code>#define x 15</code>
+              You don't need to close the statement with a semi colon, and you don't need to declare a data type, as both are done automatically during compilation.
+            </li>
+            <li>It is generally considered best practice among C developers to use #define instead of const for variables.</li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Data_Types">
+        <header>Data Types</header>
+        <article>
+          <p>C17 has 5 defined data types:</p>
+          <ul>
+            <li>Integers, represented as int
+              <ul>
+                <li>As implied by the name, integer elements only accept integer number, like 1, 2, 3, 4...</li>
+                <li>Depending on you computer, an integer can take between 16 bits of memory (minimum for most compilers) and 128 bytes (maximum for most compilers). This affects the range of numbers that can be assigned to an int.</li>
+                <li>A standard int declaration (32 bits) has a range of [-2147483648 and 2147483648].</li>
+                <li>Intgers are assigned the "signed" keyword by default. If you give it the "unsigned" keyword at declaration, the range of integers becomes [0 and 4294967295]</li>
+                <li>Integers can also be given a long attribute to increase that range by assigning 64 bits to the integer, and you can also give it the long long keyword to assign 124 bits to it.</li>
+                <li>Int can also be assigned a short keyword to reduce the range to a 16 bit number</li>
+                <li>Any operation that assigns a number outside of this range will produce an integer overflow, which can make the program unstable and even have it crash. Mind those operations!</li>
+              </ul>
+            </li>
+            <li>Real numbers are represented by float, which is short for floating point numbers. It can have up to 7 decimal digits of precision.
+              <ul>
+                <li>The same rules of signed/unsigned keywords apply here</li>
+              </ul>
+            </li>
+            <li>Double is another data type that can represent real numbers. It takes up twice as much space as float, allowing for 15 decimal digits of precision, of which 7 will always be accurate.
+              <ul>
+                <li>Signed/unsigned keywords can be applied here as well.</li>
+                <li>Double also half the range of float.</li>
+                <li>Long double can also be utilised to give it 30 digits of decimal precision, of which 15 will always be correct.</li>
+                <li>Accuracy is important here because floating-point arithmetic will always yield at least some degree of error, however small it is</li>
+                <li>It is considered best practice not use double for real numbers unless you absolutely need the extra precision.</li>
+              </ul>
+            </li>
+            <li>char is used to store characters. It takes up at least 1 byte of memory. Although you can store numbers in a char, it's best not to use it for anything other than letters.
+              <ul>
+                <li>An array of char can be used to store strings of a specified length.</li>
+              </ul>
+            </li>
+            <li>Lastly, the bool (short for boolean) is a logic based data type that can only hold true or false.</li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Operators">
+        <header>Operators</header>
+        <article>
+          <p>Operators are special characters used within an expression or statement that specify how these expressions/statements should be manipulated while the computer is evaluating them. C has a very rich set of these operators, but for beginners these are the most basic ones:</p>
+          <ul>
+            <li>Arithmetic
+              <ul>
+                <li>+, used for addition</li>
+                <li>-, used for subtraction</li>
+                <li>*, for multiplication</li>
+                <li>/, for division</li>
+                <li>% is a special character used for what is known as modulo, an operation that returns the remainder of a division</li>
+                <li>It is possible to combine several operations in a single statement</li>
+                <li>Most compilers are also able to follow the correct order of operations, commonly knows as PEMDAS, so ypu don't have to write your expressions in the correct order to get the correct result.</li>
+              </ul>
+            </li>
+            <li>Assignment
+              <ul>= is used to assign a value to a number. <i><u>This operation always goes from left to right.</u></i> For example, 15=x; is <b>invalid</b>, as you would be trying to assign the value 'x' to 15. The correct order would be x=15;</ul>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="The_if...else_and_switch_statements">
+        <header>The if...else and switch statements</header>
+        <article>
+          <p>The if...else and switch statements in C are often grouped together as they functionally similar: take a boolean expression, and execute the block of code associated with that statement. But there are a few differences worth mentioning.</p>
+          <ul>
+            <li>An if statement can be followed by an optional else statement, which executes when the Boolean expression is false, or the associated if block if it's true:
+              <code>if(argument_1){
+                /*block of code*/
+              }
+              else if(argument_2){
+                /*block of code*/
+              }
+              else if(argument_3){
+                /*block of code*/
+              }
+              .
+              .
+              .
+              else{
+                /*block of code*/
+              }</code>
+              <ul>
+                <li>C programming language assumes any non-zero and non-null values as true, and if it is either zero or null, then it is assumed as false value.</li>
+                <li>
+                  It is possible to omit the else statements completely if one wishes.
+                </li>
+              </ul>
+            </li>
+            <li>A switch statement allows a variable to be tested for equality against a list of values. Each value is called a case, and the variable being switched on is checked for each switch case:
+              <code>switch(expression){
+                case constant-expression:
+                  statement(s);
+
+                case constant-expression:
+                  statement(s)
+              }
+              </code>
+              <ul>
+                <li>Some rules that apply to switch:</li>
+                <li>The expression used in a switch statement must have an integral or enumerated type, or be of a class type in which the class has a single conversion function to an integral or enumerated type (more on classes later).</li>
+                <li>You can have any number of case statements within a switch. Each case is followed by the value to be compared to and a colon.</li>
+                <li>The <b>constant-expression</b> for a case must be the same data type as the variable in the switch, and it must be a constant or a literal.</li>
+                <li>When the variable being switched on is equal to a case, the statements following that case will execute until a break statement is reached.</li>
+                <li>When a break statement is reached, the switch terminates, and the flow of control jumps to the next line following the switch statement.</li>
+                <li>Not every case needs to contain a break. If no break appears, the flow of control will fall through to subsequent cases until a break is reached.</li>
+                <li>A switch statement can have an optional default case, which must appear at the end of the switch. The default case can be used for performing a task when none of the cases is true. No break is needed in the default case.</li>
+              </ul>
+            </li>
+            <li>Do <i><u>not</u></i> use a semi colon to end these statements. Using a semi colon will not produce an error, but the program will not execute their blocks even if the expression is true if closed by a semi colon.</li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="The_while_and_for_statements">
+        <header>The while and for statements</header>
+        <article>
+          <p>Similarly to if-else and switch statements, the for() and while() statements are very similar but have very different uses. In more detail:</p>
+          <ul>
+            <li>Both statements contain an expression, and will execute their blocks of code until the loop either hits a break; statement, or until their expression is <b>false</b>. The difference is in how their loops are counted</li>
+            <li>A for() statement has a predetermined number of loops defined in the initial expression. Its syntax is as follows: for(expression_1; expression_2; expression_3){}, when the expression_1 defines the state of the initial loop, expression_2 defines the state that will break the loop, and expression_3 is used to control the state of the loop between expressions. For example:
+              <code>for(x=0; x<=10; x++){
+                printf("&d", x);
+              }</code>
+            The initial loop starts with x=0, it will print the current value of x, add 1 through the intermediary x++ step, and will repeat this until x=11, at which point the loop will break. Do note, that it's possible to create a situation where the loop can't break by itself. In our example, if we used x-- instead of x++, x would never reach 11 as it always substracts 1, creating what's known as an endless loop.
+            </li>
+            <li>The while statement has an undefined number of loops, and will continue repeating that loop until the expression is false. The general syntax is: <code>while(expression){}</code>
+            Example: <code>x=0;
+              while(x<=10){
+              printf("%d", x);
+              x++;
+              }</code>
+              <ul>
+                <li>It is best practice to use while when you don't know the number of loops that will be executed, and use for when you do know.</li>
+                <li>There is an alternative for while called do{<span>}while().</span> It also has an indeterminable number of loops, however a major difference is that it checks if the expression is true <i>at the end</i> of a loop, whereas while() checks at the beginning. It's a minor difference, but really useful in situations where you need the loop to begin but the starting conditions don't fulfill the expression.</li>
+              </ul>
+              </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Functions">
+        <header>Functions</header>
+        <article>
+          <p>Functions are special kinds of code that execute when you call them. They are declared outisde of an existing function, usually either in their own header file or after your macros in your main .c file.</p>
+          <p>Much like variables, functions need a data type, a name, and instead of values they need a code and sometimes parameters too.</p>
+          <code>data_type function_name(parameter_1, parameter_2, ..., parameter_n){
+            code
+            return value;
+          }
+          </code>
+          <p>The most common function your main function. int main(){} is an integer type function that takes no parameters, and can optionally return an integer value (most commonly 0) for the sake of making sure that it runs properly. Much like variables, integers can take 9 (and return) all 5 data types: int, float, double, char, bool, and an additional void type that executes all its code but doesn't return anything. The other types of functions don't have to return anything either, however it's best practice to use void only if you don't plan on returning a value. But how do you call a function?</p>
+          <code>int function(int a, int b){
+            int c;
+            c=a+b;
+            return c;
+          }
+          </code>
+          <p>The function above is an int type, that takes two parameters: an integer a, and integer b. Since they are declared in the statement, we don't declare them again in the code; compilers know to assign them within that function.</p>
+          <p>Now to call a function, you need to simply type its name and give it all the required paramters. The code won't run if all the parameters aren't defined. Note: the values are assigned in order you declared them.</p>
+          <code>int x, y, i;
+            x=8;
+            y=x/2;
+            i=function(x, y);
+            printf("i = %d", i)
+          </code>
+          <p>In the code above, we declared 3 variables: 2 of them to be used in our function, and 1 to actually save the return value in our main code. If you run this in your compiler, you should get i = 12 on your screen.</p>
+          <p>Functions help keep your code clean by allowing you centralise parts of your code that you will need to reuse over and over again. Make sure to experiment more to get a better feel for how they work!</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+html, body{
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #4d4e53;
+  background-color: #ffffff;
+  line-height: 1.5;
+  min-width: 290px;
+}
+
+#main-doc{
+  position: absolute;
+  margin-left: 310px;
+  padding: 20px;
+  margin-bottom: 110px;
+}
+
+header{
+  color: black;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: thin;
+}
+
+#main-doc header{
+  text-align: left;
+  margin: 0px;
+}
+
+section article{
+  color: #4d4e53;
+  margin: 15px;
+  font-size: 0.96em;
+}
+
+section li{
+  margin: 15px 0px 0px 20px;
+}
+
+code {
+display: block;
+text-align: left;
+white-space: pre-line;
+position: relative;
+word-break: normal;
+word-wrap: normal;
+line-height: 2;
+background-color: #f7f7f7;
+padding: 15px;
+margin: 0px;
+border-radius: 5px;
+}
+
+span{
+  display: block;
+}
+
+#navbar{
+  position: fixed;
+  min-width: 290px;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  border-right: solid;
+  border-color: rgba(0, 22, 22, 0.4);
+}
+
+#navbar ul{
+  height: 88%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#navbar li{
+  color: #4e4d53;
+  border-top: 1px solid; 
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+#navbar a{
+  display: block;
+  padding: 10px 30px;
+  color: #4d4e53;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 815px){
+  #navbar ul{
+    border: 1px solid;
+    height: 207px;
+  }
+}
+
+@media only screen and (max-width: 400px){
+  #main-doc{
+    margin-left: -10px;
+  }
+}
+
+** end of undefined **
+
